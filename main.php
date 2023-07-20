@@ -43,12 +43,20 @@ echo "<li>Address : $address </li>" . "<br>";
 
 echo "<li><p>Your Skills :</p></li>";
 echo "<ul>";
+echo "<li>Programming Languages :</p>";
+echo "<ul>";
 foreach ($lang as $value) {
     echo "<li> $value </li>" . "<br>";
 }
+echo "</ul>";
+
+echo "<li>Database :</li>";
+echo "<ul>";
+
 foreach ($database as  $value) {
     echo "<li> $value </li>" . "<br>";
 }
+echo "</ul>";
 echo "</ul>";
 
 echo "<li>Department : $code</li>" . "<br>";
