@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    --primary-color: #314657;
+    --secondary-color: #58626E;
+    --tertiary-color: #9DB3BE;
+    --quaternary-color: #CCA152;
+
+}
+
+header {
+    background-color: var(--primary-color);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+    padding: 20px;
+    color: white;
+}
+
+textarea {
+    resize: none;
+    overflow-y: scroll;
+    vertical-align: center;
+    width: 80%;
+}
+
+body {
+    padding-top: 100px;
+
+}
+
+body>div {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    background-color: var(--tertiary-color);
+
+}
+
+body>div>div {
+    padding: 10px;
+    background-color: var(--secondary-color);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 2%;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 2%;
+    height: 50vh;
+}
+
+form>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+form>div>.container-skills {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+form .skills {
+    width: 60%;
+}
+
+form .skills>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+form input[type='submit'] {
+    background-color: var(--quaternary-color);
+    width: 100%;
+
+}
+
+/* media query */
+
+@media (max-width: 1000px) {
+    form {
+        height: 70vh;
+    }
+
+    form .more {
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    form .more>div:first-child {
+        margin-bottom: 5%;
+    }
+}
