@@ -28,16 +28,19 @@ header {
 textarea {
     resize: none;
     overflow-y: scroll;
-    vertical-align: center;
-    width: 80%;
+    width: 70%;
 }
 
 body {
     padding-top: 100px;
-
+    min-width: 260px;
 }
 
-body>div {
+input:not('checkbox') {
+    width: 65%;
+}
+
+body>#registrationForm {
     margin: auto;
     display: flex;
     justify-content: center;
@@ -48,16 +51,21 @@ body>div {
 
 }
 
-body>div>div {
-    padding: 10px;
-    background-color: var(--secondary-color);
+body>#registrationForm>div {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+body>#registrationForm>div:first-child {
+    padding: 10px;
+    background-color: var(--secondary-color);
     color: white;
     margin-bottom: 2%;
 }
+
 
 form {
     width: 100%;
@@ -66,35 +74,69 @@ form {
     align-items: center;
     flex-direction: column;
     padding: 2%;
-    height: 50vh;
 }
 
+form select {
+    width: 40%;
+}
+form span{
+    text-align: center;
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+/* main container */
 form>div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 2%;
-}
-
-form>div>.container-skills {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
+}
+
+/* seconde container contain the element +label */
+form>div>div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5%;
+
+}
+
+input{
+    padding:2px;
+}
+
+form>.skills {
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+
+}
+
+form>.skills>div {
+    width: calc(100% / 3);
+}
+
+form>.skills>div>.allSkills {
+    max-width: 50%;
+    margin-left: 2%;
+}
+
+form>.skills>div>.allSkills>div{
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 2%;
 }
 
-form .skills {
-    width: 60%;
+form>.skills>div>.allSkills>div label{
+    margin-left: 2%;
+    width: 90%;
+    overflow-wrap: break-word;
 }
 
-form .skills>div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
 
 form input[type='submit'] {
     background-color: var(--quaternary-color);
@@ -102,20 +144,47 @@ form input[type='submit'] {
 
 }
 
-/* media query */
+form .code {
+    color: var(--primary-color);
+}
 
-@media (max-width: 1000px) {
-    form {
-        height: 70vh;
-    }
+/* media query  */
 
+@media (max-width: 1050px) {
     form .more {
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
     }
 
+    form .more>div {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+
+    }
+
     form .more>div:first-child {
         margin-bottom: 5%;
+    }
+
+
+    label+input {
+        width: 50%;
+    }
+
+}
+
+@media (max-width:600PX) {
+
+    body>#registrationForm {
+        width: 80%;
+    }
+}
+
+@media (max-width:260px) {
+    body {
+        overflow-x: scroll;
     }
 }
