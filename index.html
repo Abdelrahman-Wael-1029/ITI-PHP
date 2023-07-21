@@ -23,43 +23,29 @@
             <form action="main.php" method="post">
                 <div class="more">
                     <div>
-                        <label for="firstName">first name:</label>
-                        <input type="text" name="firstName" id="firstName" />
-                    </div>
-                    <div>
-                        <label for="lastName">last name:</label>
-                        <input type="text" name="lastName" id="lastName" />
-                    </div>
-                </div>
-                <div class="more">
-                    <div>
                         <label for="userName">username:</label>
-                        <input type="text" name="userName" id="userName">
+                        <input required type="text" name="userName" id="userName">
                     </div>
                     <div>
                         <label for="password">password:</label>
-                        <input type="password" name="password" id="password">
+                        <input required type="password" name="password" id="password">
                     </div>
                 </div>
                 <div class="more">
                     <div>
-                        <label for="phone">phone</label>
-                        <input type="text" name="phone" id="phone">
+                        <label for="email">email</label>
+                        <input required type="email" name="email" id="email">
                     </div>
                     <div>
-                        <label for="Adress">Address:</label>
-                        <textarea name="Address" id="Address" rows="2"></textarea>
+                        <label for="phone">phone</label>
+                        <input required type="text" name="phone" id="phone">
                     </div>
                 </div>
                 <div class="more">
                     <div>
                         <label for="country">country:</label>
                         <select name="country" id="country">
-                            <option value="Egypt">Egypt</option>
-                            <option value="USA">USA</option>
-                            <option value="UK">UK</option>
-                            <option value="France">France</option>
-                            <option value="Germany">Germany</option>
+
                         </select>
                     </div>
                     <div>
@@ -73,7 +59,25 @@
                         </select>
                     </div>
                 </div>
-
+                <div class="more">
+                    <div>
+                        <label for="Adress">Address:</label>
+                        <textarea name="Address" id="Address" rows="2"></textarea>
+                    </div>
+                    <div>
+                        <label for="">gender:</label>
+                        <div>
+                            <div>
+                                <input checked type="radio" name="gender" value="male" id="male">
+                                <label for="male">male</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" value="female" id="female">
+                                <label for="female">female</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="more skills">
                     <div>
                         <span>language skils:</span>
@@ -89,7 +93,7 @@
                         </div>
                     </div>
                     <div>
-                        <span> skils:</span>
+                        <span> database:</span>
                         <div class="allSkills">
                             <div>
                                 <input type="checkbox" name="database[]" value="mysql" id="mysql">
@@ -114,20 +118,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                </div>
-                <div>
-                    <div>
-                        <label for="">gender:</label>
-                        <div>
-                            <input type="radio" name="gender" value="male" id="male">
-                            <label for="male">male</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="gender" value="female" id="female">
-                            <label for="female">female</label>
-                        </div>
-                    </div>
                 </div>
                 <div class="more">
                     <div>
@@ -135,11 +125,13 @@
                     </div>
                     <div>
                         <label for="code">Enter the code:</label>
-                        <input type="text" name="code" id="code">
+                        <input required type="text" name="code" id="code">
                     </div>
                 </div>
-
-                <input type="submit">
+                <div>
+                    <input type="reset">
+                    <input type="submit" value="Register">
+                </div>
             </form>
         </div>
     </main>
