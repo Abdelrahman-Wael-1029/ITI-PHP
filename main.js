@@ -10,23 +10,19 @@ window.onload = () => {
   spans.forEach((Element) => (Element.style.width = mx + "px"));
 
   let containters = document.querySelectorAll("form>div>div:not(.skills)");
-  console.log(containters);
-  let mxF = 0,
-    mxS = 0;
+  let mxS = 0;
   containters.forEach((element) => {
-    mxF = Math.max(mxF, element.firstElementChild.clientWidth);
     mxS = Math.max(mxS, element.lastElementChild.clientWidth);
   });
   containters.forEach((element) => {
-    // element.firstElementChild.style.width = mxF + "px";
     element.lastElementChild.style.width = mxS + "px";
   });
-  setCountry(); 
+  setCountry();
 };
 
-// .then((data) => data.json())
-// .then((data)=>console.log(data))
-// .catch((data) => console.log(data));
+const addTocken = (data) => {
+  localStorage.setItem("tocken", data);
+};
 
 const getCountry = async () => {
   let data = await fetch(
@@ -36,12 +32,35 @@ const getCountry = async () => {
 };
 
 const setCountry = async () => {
-  let data = await getCountry();
-  let select = document.getElementById("country");
-  data.forEach((country) => {
-    let newEl = document.createElement("option");
-    newEl.innerHTML = country.name;
-    newEl.setAttribute("value", country.name);
-    select.appendChild(newEl);
-  });
+  try {
+    let data = await getCountry();
+    let select = document.getElementById("country");
+    data.forEach((country) => {
+      let newEl = document.createElement("option");
+      newEl.innerHTML = country.name;
+      newEl.setAttribute("value", country.name);
+      select.appendChild(newEl);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const generateTocken = () => {
+  let str = `!@#$%^&*()_+=-~[]{};:./<>?`;
+  for (let i = 0; i < 10; ++i) {
+    str += i;
+  }
+  // add all alphabets
+  for (let i = "A"; i <= "Z"; ) {
+    str += i;
+    str += i.toLowerCase();
+    i = String.fromCharCode(i.charCodeAt(0) + 1);
+  }
+  let tocken = ``;
+  for (let i = 0; i < 20; ++i) {
+    let idx = Math.floor(Math.random() * str.length);
+    tocken += str[idx];
+  }
+  return tocken;
 };

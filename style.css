@@ -151,6 +151,8 @@ form>div:last-child>input {
 
 form .code {
     color: var(--primary-color);
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 /* media query  */
