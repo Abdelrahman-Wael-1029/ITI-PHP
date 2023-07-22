@@ -23,7 +23,6 @@ foreach ($data as $user) {
 
 $file = fopen("customer.txt", "a");
 
-
 fwrite($file, $_POST['userName'] . '|');
 fwrite($file, $_POST['password'] . '|');
 fwrite($file, $_POST['Address'] . '|');
@@ -34,7 +33,7 @@ fwrite($file, $_POST['gender'] . '|');
 fwrite($file, $_POST['department'] . "|");
 
 foreach($_POST as $key => $value){
-    if(gettype($value) == "array"){
+    if(substr($key, 0, 5)== "skill"){
         fwrite($file, $key . ":");
         foreach($value as $v){
             fwrite($file, $v . " ");

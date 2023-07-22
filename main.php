@@ -8,7 +8,9 @@ echo '
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body style="padding:20px;">
+
     <table class="table">
         <thead>
             <tr>

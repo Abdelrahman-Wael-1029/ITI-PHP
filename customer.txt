@@ -1,1 +1,1 @@
-abdo|12341225|ard elgamaea|abdelrahmanwael805@gmail.com|01068634244|Egypt|male|IT|lang:java |database:oracle ||12341225|1 Gamaa Street, Giza, Egypt|moveb29462@irebah.com|01068634244
+abdelrahman|65164146|1 Gamaa Street, Giza, Egypt|abdelrahmanwael805@gmail.com|01068634244|Egypt|male|Sales|skillLang:java |skillFramework:spring |

@@ -104,6 +104,7 @@ const setCountry = async () => {
   try {
     let data = await getCountry();
     let select = document.getElementById("country");
+    select.innerHTML = '';
     data.forEach((country) => {
       let newEl = document.createElement("option");
       newEl.innerHTML = country.name;
