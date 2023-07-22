@@ -1,57 +1,44 @@
 <?php
-
-if (
-    !isset($_POST['userName']) || !isset($_POST['password']) || !isset($_POST['Address'])
-    || !isset($_POST['email']) || !isset($_POST['phone'])
-    || !isset($_POST['country']) || !isset($_POST['gender'])
-    || !isset($_POST['code']) || !isset($_POST['department'])
-) {
-    echo "Please fill all the fields";
-    exit();
+echo '
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="padding:20px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>name</td>
+                <td>address</td>
+                <td>email</td>
+                <td>phone</td>
+                <td>country</td>
+                <td>gender</td>
+                <td>department</td>
+                <td colspan="2">Action</td>
+            </tr>
+        </thead>
+';
+$data = file("customer.txt");
+foreach ($data as $key => $value) {
+    $user = explode("|", $value);
+    echo "<td> $user[0] </td> ";
+    echo "<td> $user[2] </td> ";
+    echo "<td> $user[3] </td> ";
+    echo "<td> $user[4] </td> ";
+    echo "<td> $user[5] </td> ";
+    echo "<td> $user[6] </td> ";
+    echo "<td> $user[7] </td> ";
+    echo "<td> <a href='edit.php?userName=$user[0]'> Edit </a> </td> ";
+    echo "<td> <a href='delete.php?userName=$user[0]'> Delete </a> </td> ";
+    echo "</tr> ";
 }
-$skills = [];
-foreach ($_POST as $key => $value) {
-    if (gettype($value) == 'array') {
-        $skills[$key] = $value;
-    }
-}
-
-$address = $_POST['Address'];
-$country = $_POST['country'];
-$gender = $_POST['gender'];
-$password = $_POST['password'];
-
-$username = $_POST['userName'];
-$code = $_POST['code'];
-
-if ($code != '123456') {
-    echo "please enter the correct code";
-    exit();
-}
-
-echo "<b>thanks</b>  ";
-if ($gender === 'male')
-    echo '<b style="color:blue;">Mr. </b>';
-else
-    echo '<b style="color:blue;">Mrs. </b>';
-echo $username . "<br>";
-
-echo 'please review your information: <br>';
-echo "<ul>";
-
-echo "<li>Name : $username </li>" . "<br>";
-
-echo "<li>Address : $address </li>" . "<br>";
-if (count($skills)  > 0)
-    echo "<li><span>Your Skills :</span></li>";
-foreach ($skills as $key => $value) {
-    echo "<ul> <li><span>$key<span></li>";
-    foreach ($value as $skill) {
-        echo "<ul> <li>$skill</li> </ul>";
-    }
-    echo "</ul>";
-}
-
-echo "<li>Department : $code</li>" . "<br>";
-
-echo "</ul>";
+echo '
+    </table>    
+</body>
+</html>
+';

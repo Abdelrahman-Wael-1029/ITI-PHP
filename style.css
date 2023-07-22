@@ -26,7 +26,7 @@ header {
     color: white;
 }
 
-textarea {
+form textarea {
     resize: none;
     overflow-y: scroll;
     width: 70%;
@@ -84,11 +84,14 @@ form span {
     text-align: center;
     overflow-wrap: break-word;
     overflow: hidden;
-    text-transform: capitalize;;
+    text-transform: capitalize;
+    ;
 
 }
-form label{
-    text-transform: capitalize;;
+
+form label {
+    text-transform: capitalize;
+    ;
 }
 
 /* main container */
@@ -127,6 +130,10 @@ form>.skills>div>.allSkills {
     margin-left: var(--mainMargin);
 }
 
+form>div>div>*:last-child {
+    width: 68%;
+}
+
 form>.skills>div>.allSkills>div {
     max-width: 100%;
     display: flex;
@@ -157,7 +164,7 @@ form .code {
 
 /* media query  */
 
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
     form .more {
         flex-direction: column;
         justify-content: space-evenly;
@@ -181,9 +188,47 @@ form .code {
     }
 }
 
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--primary-color);
+}
+
+.table thead {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+
+.table tbody tr:nth-child(odd) {
+    background-color: var(--tertiary-color);
+}
+
+
+.table td,
+.table th {
+    width: 1%;
+    padding: 5px;
+    text-align: center;
+    overflow-wrap: break-word;
+
+}
+
+.table a {
+    text-decoration: none;
+    color: white;
+    background-color: var(--quaternary-color);
+    padding: 5px;
+    border-radius: 5px;
+
+
+}
+
 @media (max-width:600PX) {
     body>#registrationForm {
-        width: 80%;
+        width: 85%;
     }
 }
 

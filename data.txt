@@ -1,0 +1,2 @@
+abdelrahman|12341225|1 Gamaa Street, Giza, Egypt|kovapiv643@irebah.com|01032568977|Egypt|male|IT|lang:java |database:oracle |
+abdo|12341225|1 Gamaa Street, Giza, Egypt|abdelrahmanwael805@gmail.com|01068634244|Egypt|male|IT|lang:java |database:oracle ||12341225|1 Gamaa Street, Giza, Egypt|moveb29462@irebah.com|01068634244
