@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITI-PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <?php
+        @require_once('header.php');
+    ?>
+    <main id="loginForm">
+        <div>
+            <p>login form</p>
+        </div>
+        <div>
+            <form action="login.php" method="post">
+                <?php
+                    @require_once('handleError.php');
+                ?>
+                <div class="more">
+                    <div>
+                        <label for="userName">username:</label>
+                        <input required type="text" name="userName" id="userName">
+                    </div>
+                    <div>
+                        <label for="password">password:</label>
+                        <input required type="password" name="password" id="password">
+                    </div>
+                </div>
+                <div>
+                    <input type="reset">
+                    <input type="submit" value="login">
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

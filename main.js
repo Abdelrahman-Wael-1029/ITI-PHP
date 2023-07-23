@@ -2,6 +2,7 @@ window.onload = () => {
   resetLabel();
   setCountry();
   generanteCode();
+  login();
 };
 
 const generanteCode = () => {
@@ -12,7 +13,8 @@ const generanteCode = () => {
     code = code + Math.floor(Math.random() * 10);
   }
   let codeEl = document.querySelector(".code");
-  codeEl.innerHTML = code;
+  if (!!codeEl)
+    codeEl.innerHTML = code;
 };
 
 const resetLabel = () => {
@@ -38,8 +40,27 @@ const getCountry = async () => {
   return data.json();
 };
 
+const setCountry = async () => {
+  try {
+    let data = await getCountry();
+    let select = document.getElementById("country");
+    select.innerHTML = '';
+    data.forEach((country) => {
+      let newEl = document.createElement("option");
+      newEl.innerHTML = country.name;
+      newEl.setAttribute("value", country.name);
+      select.appendChild(newEl);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 // not used yet
-const login = async () => {
+/*
+const login = async (e) => {
+  e.preventDefault();
+  
   let username = document.getElementById("userName").value;
   let password = document.getElementById("password").value;
   let email = document.getElementById("email").value;
@@ -61,60 +82,10 @@ const login = async () => {
       skills.push({ name, allSkills });
     }
   });
-  let regex = "^[a-zA-Z ]+$"
 
-  if (!username.match(regex)) {
-    alert("Username must be alpha beta");
-    return;
-  }
-
-  regex = "^[\\w]+@[\\w]+\\.[\\w]+$"
-  if (!email.match(regex)) {
-    alert("Email must be valid");
-    return;
-  }
-  regex = "^\\d{11}$"
-  if (!phone.match(regex)) {
-    alert("Phone must be valid 11 digits");
-    return;
-  }
-  regex = "^\\w{8,}$"
-  if (!password.match(regex)) {
-    alert("Password must be more than 8 characters");
-    return;
-  };
-
-  let tocken = generateTocken();
-  let data = {
-    username,
-    password,
-    email,
-    phone,
-    country,
-    department,
-    address,
-    gender,
-    skills,
-    tocken,
-  };
   form.submit();
 };
 
-const setCountry = async () => {
-  try {
-    let data = await getCountry();
-    let select = document.getElementById("country");
-    select.innerHTML = '';
-    data.forEach((country) => {
-      let newEl = document.createElement("option");
-      newEl.innerHTML = country.name;
-      newEl.setAttribute("value", country.name);
-      select.appendChild(newEl);
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 const generateTocken = () => {
   let str = `!@#$%^&*()_+=-~[]{};:./<>?`;
@@ -134,3 +105,5 @@ const generateTocken = () => {
   }
   return tocken;
 };
+
+*/

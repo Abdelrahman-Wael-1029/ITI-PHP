@@ -1,1 +1,2 @@
-abdelrahman|65164146|1 Gamaa Street, Giza, Egypt|abdelrahmanwael805@gmail.com|01068634244|Egypt|male|Sales|skillLang:java |skillFramework:spring |
+abdelrahman wael|abdoabdo|1 gamaa street, giza, |abdelrahmanweal5@gmail.com|01068634200|afghanistan|male|Sales|images/1690124191.jpg|skillLang:java |
+abdelrahman|abdoabdo|1 gamaa street, giza, egypt|abdelrahmanweal5@gmail.com|01068634244|afghanistan|male|it|images/1690124615.jpg|skilllang:php java |

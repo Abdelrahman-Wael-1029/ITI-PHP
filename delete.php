@@ -1,13 +1,17 @@
 <?php
 
-$userName = $_GET['userName'];
+$userName = @$_GET['userName'];
 
-
+session_start();
 $data = file("customer.txt");
 foreach ($data as $key => $value) {
     $user = explode("|", $value);
     if ($user[0] == $userName) {
         unset($data[$key]);
+        if($user[0] === $_SESSION['userName']){
+            unset($_SESSION['userName']);
+            unset($_SESSION['password']);
+        }
     }
 }
 
@@ -18,3 +22,4 @@ foreach ($data as $key => $value) {
 fclose($file);
 
 header("location:main.php");
+?>

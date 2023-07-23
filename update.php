@@ -2,11 +2,11 @@
 echo "<pre>";;
 
 if (
-     !isset($_POST['password']) || !isset($_POST['Address'])
+    !isset($_POST['password']) || !isset($_POST['Address'])
     || !isset($_POST['email']) || !isset($_POST['phone'])
 ) {
-    echo "Please fill all the fields";
-    exit();
+    header('Location: edit.php?error=missing data');
+    exit;
 }
 
 
@@ -26,10 +26,24 @@ foreach($data as $key => $value){
 }
 
 if(!$user){
-    header('Location: main.php');
+    header('Location: edit.php?error=try again');
+    exit;
+}
+
+@require_once('validData.php');
+
+if(!validEmail($_POST['email'])){
+    header('Location: edit.php?error=invalid email');
+    exit;
+}
+
+if(!validPass($_POST['password'])){
+    header('Location: edit.php?error=invalid password');
+    exit;
 }
 
 $user = explode("|", $user);
+
 
 $user[1] = $_POST['password'];
 $user[2] = $_POST['Address'];

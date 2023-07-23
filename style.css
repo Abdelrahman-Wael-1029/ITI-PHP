@@ -10,6 +10,9 @@
     --tertiary-color: #9DB3BE;
     --quaternary-color: #CCA152;
     --mainMargin: 2%;
+    --headerMargin: 8%;
+    --headerPadding: 10px;
+    --mainPadding: 20px;
 
 }
 
@@ -17,14 +20,65 @@ header {
     background-color: var(--primary-color);
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: fixed;
     top: 0px;
     left:0px;
     z-index: 1;
-    padding: 20px;
+    padding: var(--mainPadding);
     color: white;
+
+}
+
+header>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:var(--headerPadding);
+
+}
+
+header>div>a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+    transition:.5s;    
+}
+
+
+header>nav{
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    width:50%;
+}
+
+header>nav>ul{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width:100%;
+    list-style: none;
+}
+
+header>nav>ul>li{
+    margin-left: var(--headerMargin);
+}
+
+header>nav>ul>li>a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+
+
+#mainTable{
+    padding:20px;
 }
 
 form textarea {
@@ -42,18 +96,26 @@ input:not('checkbox') {
     width: 65%;
 }
 
-body>#registrationForm {
+input[type='file']{
+    overflow-wrap: break-word;
+    overflow: hidden;
+    white-space: break-spaces;
+}
+
+body>#registrationForm,
+body>#loginForm {
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 50%;
+    width: 70%;
     background-color: var(--tertiary-color);
 
 }
 
-body>#registrationForm>div {
+body>#registrationForm>div,
+body>#loginForm>div {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -61,9 +123,10 @@ body>#registrationForm>div {
 }
 
 
-body>#registrationForm>div:first-child {
+body>#registrationForm>div:first-child,
+body>#loginForm>div:first-child {
     padding: 10px;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: white;
     margin-bottom: var(--mainMargin);
 }
@@ -163,31 +226,6 @@ form .code {
     font-weight: bold;
 }
 
-/* media query  */
-
-@media (max-width: 1200px) {
-    form .more {
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    form .more>div {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 100%;
-    }
-
-    form .more>div:first-child {
-        margin-bottom: 5%;
-    }
-
-    label+input {
-        width: 50%;
-
-    }
-}
 
 .table {
     width: 100%;
@@ -223,12 +261,48 @@ form .code {
     background-color: var(--quaternary-color);
     padding: 5px;
     border-radius: 5px;
-
-
 }
 
+
+.error{
+    background-color:var(--tertiary-color);
+    color:red;
+    padding:var(--mainPadding);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* media query  */
+
+@media (max-width: 800px) {
+    form .more {
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    form .more>div {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+    }
+
+    form .more>div:first-child {
+        margin-bottom: 5%;
+    }
+
+    label+input {
+        width: 50%;
+
+    }
+}
+
+
 @media (max-width:600PX) {
-    body>#registrationForm {
+    body>#registrationForm,
+    body>#loginForm {
         width: 85%;
     }
 }

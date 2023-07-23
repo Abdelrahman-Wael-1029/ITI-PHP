@@ -13,14 +13,10 @@ foreach($data as $key => $value){
 }
 $user = explode("|", $user);
 
+@require_once('loginHeader.php');
+
 echo "
 <link rel='stylesheet' href='style.css'>
-
-<header>
-<div>
-    ITI PHP
-</div>
-</header>
 <main id='registrationForm'>
 <div>
     <p>Edit form</p>
@@ -28,6 +24,9 @@ echo "
 
 <div>
     <form action='update.php' method='post'>
+    ";
+        @require_once('handleError.php');
+echo "
         <div >
             <div>
                 <label for='email'>email</label>
@@ -110,6 +109,7 @@ echo "
 
     </form>
 </div>
+
 </main>
 ";
 

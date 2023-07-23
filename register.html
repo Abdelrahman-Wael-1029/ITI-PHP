@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ITI-PHP</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
+
+<body>
+    <?php
+        @require_once('header.php');
+    ?>
+    <main id="registrationForm">
+        <div>
+            <p>registration form</p>
+        </div>
+        <div>
+            <form action="register.php" method="post" enctype="multipart/form-data">
+                <?php
+                    @require_once('handleError.php');
+                ?>
+                <div class="more">
+                    <div>
+                        <label for="userName">username:</label>
+                        <input required type="text" name="userName" id="userName">
+                    </div>
+                    <div>
+                        <label for="password">password:</label>
+                        <input required type="password" name="password" id="password">
+                    </div>
+                </div>
+                <div class="more">
+                    <div>
+                        <label for="email">email</label>
+                        <input required type="email" name="email" id="email">
+                    </div>
+                    <div>
+                        <label for="phone">phone</label>
+                        <input required type="text" name="phone" id="phone">
+                    </div>
+                </div>
+                <div class="more">
+                    <div>
+                        <label for="country">country:</label>
+                        <select name="country" id="country">
+                            <option value="Egypt">Egypt</option>
+                            <option value="US">US</option>
+
+                        </select>
+                    </div>
+                    <div>
+                        <label for="department">department:</label>
+                        <select name="department" id="department">
+                            <option value="IT">IT</option>
+                            <option value="HR">HR</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Finance">Finance</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="more">
+                    <div>
+                        <label for="image">profile image</label>
+                        <input type="file" name="image" id="image" required>
+                    </div>
+                    <div>
+                        <label for="">gender:</label>
+                        <div>
+                            <div>
+                                <input checked type="radio" name="gender" value="male" id="male">
+                                <label for="male">male</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" value="female" id="female">
+                                <label for="female">female</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="Adress">Address:</label>
+                        <textarea name="Address" id="Address" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="more skills">
+                    <div>
+                        <span>language skils:</span>
+                        <div class="allSkills">
+                            <div>
+                                <input type="checkbox" name="skillLang[]" value="php" id="php">
+                                <label for="php">php</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="skillLang[]" value="java" id="java">
+                                <label for="java">java</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span> database:</span>
+                        <div class="allSkills">
+                            <div>
+                                <input type="checkbox" name="skillDatabase[]" value="mysql" id="mysql">
+                                <label for="mysql">mysql</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="skillDatabase[]" value="oracle" id="oracle">
+                                <label for="oracle">oracle</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span> framework:</span>
+                        <div class="allSkills">
+                            <div>
+                                <input type="checkbox" name="skillFramework[]" value="laravel" id="laravel">
+                                <label for="laravel">laravel</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="skillFramework[]" value="spring" id="spring">
+                                <label for="spring">spring</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="more">
+                    <div>
+                        <span>code:</span> <span class="code">123456</span>
+                    </div>
+                    <div>
+                        <label for="code">Enter the code:</label>
+                        <input required type="text" name="code" id="code">
+                    </div>
+                </div>
+                <div>
+                    <input type="reset">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+
+    </main>
+</body>
+
+<script src="main.js"></script>
+
+
+</html>
