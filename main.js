@@ -2,7 +2,6 @@ window.onload = () => {
   resetLabel();
   setCountry();
   generanteCode();
-  login();
 };
 
 const generanteCode = () => {

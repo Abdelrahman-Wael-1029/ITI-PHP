@@ -1,17 +1,12 @@
 <?php
 session_start();
 $userName = @$_SESSION['userName'];
+$image;
 
-$data = file("customer.txt");
-foreach ($data as $key => $value) {
-    $user = explode("|", $value);
-    foreach($user as $key =>$value){
-        if(substr($value, 0, 6) == "images"){
-            $image = $value;
-            break;
-        }
-    }
-}
+require_once 'database.php';
+$user = getInfo($userName);
+$user = $user[0];
+$image = $user['image'];
 
 echo "
 <link rel='stylesheet' href='style.css'>

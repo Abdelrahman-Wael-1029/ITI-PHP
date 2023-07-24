@@ -1,25 +1,14 @@
 <?php
 
 $userName = @$_GET['userName'];
-
+require_once 'database.php';
 session_start();
-$data = file("customer.txt");
-foreach ($data as $key => $value) {
-    $user = explode("|", $value);
-    if ($user[0] == $userName) {
-        unset($data[$key]);
-        if($user[0] === $_SESSION['userName']){
-            unset($_SESSION['userName']);
-            unset($_SESSION['password']);
-        }
-    }
+if($userName === @$_SESSION['userName']){
+    session_destroy();
 }
 
-$file = fopen("customer.txt", "w");
-foreach ($data as $key => $value) {
-    fwrite($file, $value);
-}
-fclose($file);
+$data = fetchData();
+$test = deleteUser($userName);
 
 header("location:main.php");
 ?>

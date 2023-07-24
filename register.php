@@ -41,39 +41,32 @@ $currentPath = $_FILES['image']['tmp_name'];
 $extension = pathinfo($image['name'])['extension'];
 $newName = "images/" . time() . ".$extension";
 move_uploaded_file($currentPath, $newName);
-$data = file('customer.txt');
-foreach ($data as $user) {
-    $arr = explode('|', $user);
-    if ($arr[0] === $userName) {
-        header('Location: register.html?error=user already exists');
-        exit;
-    }
+
+require_once 'database.php';
+$find = getInfo($userName);
+if (count($find)) {
+    header('Location: register.html?error=user name already exist');
+    exit;
 }
 
-$file = fopen("customer.txt", "a");
+$data = [];
 
-fwrite($file, trim(strtolower($userName . '|')));
-fwrite($file, trim(strtolower($password . '|')));
-fwrite($file, trim(strtolower($_POST['Address'] . '|')));
-fwrite($file, trim(strtolower($email . '|')));
-fwrite($file, trim(strtolower($_POST['phone'] . '|')));
-fwrite($file, trim(strtolower($_POST['country'] . '|')));
-fwrite($file, trim(strtolower($_POST['gender'] . '|')));
-fwrite($file, trim(strtolower($_POST['department'] . "|")));
-fwrite($file, trim(strtolower($newName . "|")));
-
-foreach($_POST as $key => $value){
+foreach($_POST as $key=>$value){
     if(substr($key, 0, 5)== "skill"){
-        fwrite($file, trim(strtolower($key)) . ":");
-        foreach($value as $v){
-            fwrite($file,trim(strtolower( $v)) . " ");
-        }
-        fwrite($file, "|");
+        $data[$key] = implode(",", $value);
+        continue;
     }
+    $data[$key] = $value;
 }
-fwrite($file, "\n");
+$data['image'] = $newName;
 
-fclose($file);
+$test = setData($data);
+if(!$test){
+    header('Location: register.html?error=error try again');
+    exit;
+}
+
+
 session_start();
 $_SESSION['userName'] = $userName;
 $_SESSION['password'] = $password;

@@ -9,21 +9,12 @@ if (
     exit;
 }
 
-
 $userName = $_POST['userName'];
+require_once 'database.php';
 
-$data = file("customer.txt");
+$data = getInfo($userName);
 
-$user = 0;
-
-foreach($data as $key => $value){
-    $temp = explode("|", $value);
-    if($temp[0] == $userName){
-        $user = $value;
-        unset($data[$key]);
-        break;
-    }
-}
+$user = $data[0];
 
 if(!$user){
     header('Location: edit.php?error=try again');
@@ -42,54 +33,26 @@ if(!validPass($_POST['password'])){
     exit;
 }
 
-$user = explode("|", $user);
+
+$user['email'] = $_POST['email'];
+$user['password'] = $_POST['password'];
+$user['phone'] = $_POST['phone'];
+$user['Address'] = $_POST['Address'];
+$user['department'] = $_POST['department'];
+if(isset($_POST['skillLang']))
+    $user['skillLang'] = implode(",", $_POST['skillLang']);
+else $user['skillLang'] = null;
+if(isset($_POST['skillDatabase']))
+    $user['skillDatabase'] = implode(",", $_POST['skillDatabase']);
+else $user['skillDatabase'] = null;
+if(isset($_POST['skillFramework']))
+    $user['skillFramework'] = implode(",", $_POST['skillFramework']);
+else $user['skillFramework'] = null;
+
+session_start();
+$_SESSION['password'] = $user['password'];
 
 
-$user[1] = $_POST['password'];
-$user[2] = $_POST['Address'];
-$user[3] = $_POST['email'];
-$user[4] = $_POST['phone'];
-$user[7] = $_POST['department'];
-
-
-foreach($user as $key =>$value){
-    if(substr($value,0, 5) == "skill"){
-        unset($user[$key]);
-    }
-    if($value === "\n " || $value === "" || $value === "\n" || $value === " "){
-        unset($user[$key]);
-    }
-}
-
-foreach($_POST as $key =>$value){
-    if(gettype($key) === "string" && substr($key, 0, 5) == "skill"){
-        $user[$key] = $value;
-    }
-}
-
-$file = fopen("customer.txt", "w");
-
-foreach($user as $key=>$value){
-    if(gettype($value) !== "string"){continue;}
-    if(substr($key, 0, 5) === 'skill'){continue;}
-    fwrite($file, $value. '|');
-}
-
-foreach($user as $key => $value){
-    if(substr($key, 0, 5) === "skill"){
-        fwrite($file, $key . ":");
-        foreach($value as $v){
-            fwrite($file, $v . " ");
-        }
-        fwrite($file, "|");
-    }
-}
-fwrite($file, "\n");
-
-
-foreach($data as $value){
-    fwrite($file, $value);
-}
-
+updateUser($user);
 
 header('Location: main.php');

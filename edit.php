@@ -1,22 +1,13 @@
 <?php
 
 $userName = $_GET['userName'];
-
-$data = file("customer.txt");
-
-$user;
-foreach($data as $key => $value){
-    $temp = explode("|", $value);
-    if($temp[0] == $userName){
-        $user = $value;
-    }
-}
-$user = explode("|", $user);
+require_once 'database.php';
+$user = getInfo($userName);
+$user = $user[0];
 
 @require_once('loginHeader.php');
 
 echo "
-<link rel='stylesheet' href='style.css'>
 <main id='registrationForm'>
 <div>
     <p>Edit form</p>
@@ -30,23 +21,23 @@ echo "
         <div >
             <div>
                 <label for='email'>email</label>
-                <input required type='email' name='email' id='email' value=$user[3]>
+                <input required type='email' name='email' id='email' value='$user[email]'>
             </div> 
         </div>
         <div class='more'>
             <div>
             <label for='password'>password:</label>
-            <input required type='password' name='password' id='password' value=$user[1]>
+            <input required type='password' name='password' id='password' value='$user[password]'>
         </div>
             <div>
                 <label for='phone'>phone</label>
-                <input required type='text' name='phone' id='phone' value=$user[4]>
+                <input required type='text' name='phone' id='phone' value='$user[phone]'>
             </div>
         </div>
         <div class='more'>
             <div>
                 <label for='Adress'>Address:</label>
-                <textarea name='Address' id='Address' rows='2' >$user[2]</textarea>
+                <textarea name='Address' id='Address' rows='2' >$user[address]</textarea>
             </div>
             <div>
                 <label for='department'>department:</label>
@@ -100,7 +91,7 @@ echo "
                         </div>
                     </div>
                 </div>
-        <input required type='text' name='userName' id='user Name' value='$user[0]'hidden>
+        <input required type='text' name='userName' id='user Name' value='$userName'hidden>
 
         <div>
             <input type='reset'>
@@ -112,8 +103,6 @@ echo "
 
 </main>
 ";
-
-
 
 
 echo '<script src="main.js"></script>';
