@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 function connect(){
     try{
-        $username = 'ITI-PHP@localhost';
+        $username = 'ITI_PHP';
         $password = 'ITI-PHP';
         
         $connect = 'mysql:host=localhost;dbname=iti;port=3306;';
@@ -48,16 +48,20 @@ function getInfo (string $name){
 
 function deleteUser(string $name){
     try{
-    $dp = connect();
-    $user = getInfo($name);
-    $user = $user[0];
-    unlink($user['image']);
-    $query = "delete from users where name = ?";
-    $stmt = $dp->prepare($query);
-    $stmt ->execute([$name]);
-    $result = $stmt->fetchall();
-    $dp = null;
-    return true;
+        if(!$name){
+            return false;
+        }
+        $dp = connect();
+
+        $user = getInfo($name);
+        $user = $user[0];
+
+        $query = "delete from users where name = ?";
+        $stmt = $dp->prepare($query);
+        $stmt ->execute([$user['name']]);
+        unlink($user['image']);
+        $dp = null;
+        return true;
     }catch(Exception $e){
         echo $e->getMessage();
         return false;
@@ -68,7 +72,7 @@ function updateUser(array $data){
     try{
     $dp = connect();
     $query = "
-    update users set email = ?, password = ?, phone = ?, address = ?, department = ?, skilllang = ?, skilldatabase = ?, skillfreamwork = ?
+    update users set email = ?, password = ?, phone = ?, address = ?, department = ?, skilllang = ?, skilldatabase = ?, skillfreamwork = ?, image = ?
     where name = ?
     ";
     $stmt = $dp->prepare($query);
@@ -82,6 +86,7 @@ function updateUser(array $data){
         @$data['skillLang'],
         @$data['skillDatabase'],
         @$data['skillFramework'],
+        @$data['image'],
         @$data['name']
     ]);
     
@@ -90,37 +95,37 @@ function updateUser(array $data){
     return true;
     }catch(Exception $e){
         echo $e->getMessage();
+        exit;
         return false;
     }
 }
 
+
 function setData(array $data){
-   try{
-    $dp = connect();
-    $query = "
-    insert into users( name, email, password, phone, address, department, country, skilllang, skilldatabase,
-                    skillfreamwork, image)
-                values(?,?,?,?,?,?,?,?,?,?,?)
-        ";
-    $stmt = $dp->prepare($query);
-    echo "<pre>";
-    var_dump($data);
-    $stmt ->execute([
-        @$data['userName'],
-        @$data['email'],
-        @$data['password'],
-        @$data['phone'],
-        @$data['Address'],
-        @$data['department'],
-        @$data['country'],
-        @$data['skillLang'],
-        @$data['skillDatabase'],
-        @$data['skillFramework'],
-        @$data['image']
-    ]);
-    $result = $stmt->fetchall();
-    $dp = null;
-    return true;
+    try{
+        $dp = connect();
+        $query = "
+        insert into users( name, email, password, phone, address, department, country, skilllang, skilldatabase,
+                        skillfreamwork, image)
+                    values(?,?,?,?,?,?,?,?,?,?,?)
+            ";
+        $stmt = $dp->prepare($query);
+        $stmt ->execute([
+            @$data['name'],
+            @$data['email'],
+            @$data['password'],
+            @$data['phone'],
+            @$data['Address'],
+            @$data['department'],
+            @$data['country'],
+            @$data['skillLang'],
+            @$data['skillDatabase'],
+            @$data['skillFramework'],
+            @$data['image']
+        ]);
+        $result = $stmt->fetchall();
+        $dp = null;
+        return true;
     }catch(Exception $e){
         echo $e->getMessage();
         return false;

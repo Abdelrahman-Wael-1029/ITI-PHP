@@ -14,25 +14,29 @@ echo "
 </div>
 
 <div>
-    <form action='update.php' method='post'>
+    <form action='update.php' method='post' enctype='multipart/form-data'>
     ";
         @require_once('handleError.php');
 echo "
-        <div >
+        <div class='more'>
             <div>
                 <label for='email'>email</label>
                 <input required type='email' name='email' id='email' value='$user[email]'>
             </div> 
+                <div>
+                    <label for='password'>password:</label>
+                    <input required type='password' name='password' id='password' value='$user[password]'>
+                </div>
         </div>
         <div class='more'>
-            <div>
-            <label for='password'>password:</label>
-            <input required type='password' name='password' id='password' value='$user[password]'>
-        </div>
             <div>
                 <label for='phone'>phone</label>
                 <input required type='text' name='phone' id='phone' value='$user[phone]'>
             </div>
+                <div>
+                    <label for='image'>profile image</label>
+                    <input type='file' name='image' id='image' required>
+                </div>
         </div>
         <div class='more'>
             <div>

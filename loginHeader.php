@@ -3,6 +3,11 @@ session_start();
 $userName = @$_SESSION['userName'];
 $image;
 
+if(!$userName){
+    header('Location: login.html');
+    exit;
+}
+
 require_once 'database.php';
 $user = getInfo($userName);
 $user = $user[0];

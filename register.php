@@ -5,6 +5,8 @@ if (
     || !isset($_POST['country']) || !isset($_POST['gender'])
     || !isset($_POST['code']) || !isset($_POST['department'])
 ) {
+    echo 'not data';
+    exit;
     header('Location: register.html?error=missing data');
 }
 @require_once('validData.php');
@@ -59,7 +61,7 @@ foreach($_POST as $key=>$value){
     $data[$key] = $value;
 }
 $data['image'] = $newName;
-
+$data['name'] = $userName;
 $test = setData($data);
 if(!$test){
     header('Location: register.html?error=error try again');
