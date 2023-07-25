@@ -1,6 +1,5 @@
 <?php
 echo "<pre>";;
-
 if (
     !isset($_POST['password']) || !isset($_POST['Address'])
     || !isset($_POST['email']) || !isset($_POST['phone']) 
@@ -11,9 +10,12 @@ if (
 }
 
 $userName = $_POST['userName'];
+$userName = trim(strtolower($userName));
 require_once 'database.php';
+$db = new dataBase();
+$db->connect($dbConnect, $dbUserName, $dbPassword);
 
-$data = getInfo($userName);
+$data = $db->getInfo($userName, 'users');
 
 $user = $data[0];
 
@@ -65,6 +67,6 @@ session_start();
 $_SESSION['password'] = $user['password'];
 
 
-updateUser($user);
+$db->updateUser($user, 'users', $userName);
 
 header('Location: main.php');

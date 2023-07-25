@@ -45,7 +45,9 @@ $newName = "images/" . time() . ".$extension";
 move_uploaded_file($currentPath, $newName);
 
 require_once 'database.php';
-$find = getInfo($userName);
+$db = new dataBase();
+$db->connect($dbConnect, $dbUserName, $dbPassword);
+$find = getInfo($userName, 'users');
 if (count($find)) {
     header('Location: register.html?error=user name already exist');
     exit;

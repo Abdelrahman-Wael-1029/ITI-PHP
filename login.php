@@ -13,7 +13,9 @@ $userName = trim(strtolower($userName));
 $password = trim(strtolower($password));
 
 require_once 'database.php';
-$find = getInfo($userName);
+$db = new dataBase();
+$db->connect($dbConnect, $dbUserName, $dbPassword);
+$find =$db->getInfo($userName, 'users');
 if(count($find)){
     if($find[0]['password'] == $password){
         session_start();

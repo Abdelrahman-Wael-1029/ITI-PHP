@@ -25,7 +25,10 @@ echo '
             </tr>
         </thead>
 ';
-$data = fetchDAta();
+
+$db = new dataBase();
+$db->connect($dbConnect, $dbUserName, $dbPassword);
+$data = $db->fetchDAta('users');
 
 foreach ($data as $key => $value) {
     $user = $value;

@@ -10,8 +10,9 @@ session_start();
 if($userName === @$_SESSION['userName']){
     session_destroy();
 }
-
-deleteUser($userName);
+$db = new dataBase();
+$db->connect($dbConnect, $dbUserName, $dbPassword);
+$db->deleteUser($userName, 'users');
 
 header("location:main.php");
 ?>

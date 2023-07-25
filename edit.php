@@ -1,11 +1,11 @@
 <?php
-
-$userName = $_GET['userName'];
-require_once 'database.php';
-$user = getInfo($userName);
-$user = $user[0];
-
 @require_once('loginHeader.php');
+require_once 'database.php';
+$db = new dataBase();
+$db->connect($dbConnect, $dbUserName, $dbPassword);
+
+$user = $db->getInfo($_GET['userName'], 'users');
+$user = $user[0];
 
 echo "
 <main id='registrationForm'>
@@ -95,7 +95,8 @@ echo "
                         </div>
                     </div>
                 </div>
-        <input required type='text' name='userName' id='user Name' value='$userName'hidden>
+
+        <input required type='text' name='userName' id='userName' value='$user[name]' hidden>
 
         <div>
             <input type='reset'>
@@ -107,7 +108,6 @@ echo "
 
 </main>
 ";
-
 
 echo '<script src="main.js"></script>';
 

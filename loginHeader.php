@@ -9,7 +9,11 @@ if(!$userName){
 }
 
 require_once 'database.php';
-$user = getInfo($userName);
+$db = new dataBase();
+
+$db->connect($dbConnect,$dbUserName, $dbPassword);
+$user = $db->getInfo($userName, 'users');
+
 $user = $user[0];
 $image = $user['image'];
 
