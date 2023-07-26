@@ -9,7 +9,7 @@ $user = $user[0];
 
 echo "
 <main id='registrationForm'>
-<div>
+<div class='title'>
     <p>Edit form</p>
 </div>
 
@@ -54,49 +54,58 @@ echo "
                 </select>
             </div>
         </div>
-        <div class='more skills'>
-                    <div>
-                        <span>language skils:</span>
-                        <div class='allSkills'>
-                            <div>
-                                <input type='checkbox' name='skillLang[]' value='php' id='php'>
-                                <label for='php'>php</label>
-                            </div>
-                            <div>
-                                <input type='checkbox' name='skillLang[]' value='java' id='java'>
-                                <label for='java'>java</label>
-                            </div>
+        <div>
+        <div class='multi'>
+            <div>
+                <span>skills</span>
+            </div>
+            <div>
+                <div>
+                    <span>language skils:</span>
+                    <div class='allmulti'>
+                        <div>
+                            <input type='checkbox' name='skillLang[]' value='php' id='php'>
+                            <label for='php'>php</label>
                         </div>
-                    </div>
-                    <div>
-                        <span> database:</span>
-                        <div class='allSkills'>
-                            <div>
-                                <input type='checkbox' name='skillDatabase[]' value='mysql' id='mysql'>
-                                <label for='mysql'>mysql</label>
-                            </div>
-                            <div>
-                                <input type='checkbox' name='skillDatabase[]' value='oracle' id='oracle'>
-                                <label for='oracle'>oracle</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <span> framework:</span>
-                        <div class='allSkills'>
-                            <div>
-                                <input type='checkbox' name='skillFramework[]' value='laravel' id='laravel'>
-                                <label for='laravel'>laravel</label>
-                            </div>
-                            <div>
-                                <input type='checkbox' name='skillFramework[]' value='spring' id='spring'>
-                                <label for='spring'>spring</label>
-                            </div>
+                        <div>
+                            <input type='checkbox' name='skillLang[]' value='java' id='java'>
+                            <label for='java'>java</label>
                         </div>
                     </div>
                 </div>
+                <div>
+                    <span> database</span>
+                    <div class='allmulti'>
+                        <div>
+                            <input type='checkbox' name='skillDatabase[]' value='mysql' id='mysql'>
+                            <label for='mysql'>mysql</label>
+                        </div>
+                        <div>
+                            <input type='checkbox' name='skillDatabase[]' value='oracle' id='oracle'>
+                            <label for='oracle'>oracle</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span> framework:</span>
+                    <div class='allmulti'>
+                        <div>
+                            <input type='checkbox' name='skillFramework[]' value='laravel' id='laravel'>
+                            <label for='laravel'>laravel</label>
+                        </div>
+                        <div>
+                            <input type='checkbox' name='skillFramework[]' value='spring' id='spring'>
+                            <label for='spring'>spring</label>
+                        </div>
 
-        <input required type='text' name='userName' id='userName' value='$user[name]' hidden>
+                    </div>
+                </div>
+            </div>
+            </fieldset>
+        </div>
+    </div>
+
+        <input required type='text' name='userName' id='userName' value='$user[username]' hidden>
 
         <div>
             <input type='reset'>

@@ -47,24 +47,25 @@ move_uploaded_file($currentPath, $newName);
 require_once 'database.php';
 $db = new dataBase();
 $db->connect($dbConnect, $dbUserName, $dbPassword);
-$find = getInfo($userName, 'users');
-if (count($find)) {
+$find = $db->getInfo($userName, 'users');
+
+if ($find) {
     header('Location: register.html?error=user name already exist');
     exit;
 }
 
 $data = [];
-
+$data['skills'] = "";
 foreach($_POST as $key=>$value){
     if(substr($key, 0, 5)== "skill"){
-        $data[$key] = implode(",", $value);
+        $data['skills'] .= $key. ':' . implode(",", $value).'|';
         continue;
     }
     $data[$key] = $value;
 }
 $data['image'] = $newName;
 $data['name'] = $userName;
-$test = setData($data);
+$test = $db->setData($data, 'users', $userName);
 if(!$test){
     header('Location: register.html?error=error try again');
     exit;

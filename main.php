@@ -32,7 +32,7 @@ $data = $db->fetchDAta('users');
 
 foreach ($data as $key => $value) {
     $user = $value;
-    echo "<td> $user[name] </td> ";
+    echo "<td> $user[username] </td> ";
     echo "<td> $user[address] </td> ";
     echo "<td> $user[email] </td> ";
     echo "<td> $user[phone] </td> ";

@@ -53,15 +53,7 @@ $user['phone'] = $_POST['phone'];
 $user['Address'] = $_POST['Address'];
 $user['department'] = $_POST['department'];
 
-if(isset($_POST['skillLang']))
-    $user['skillLang'] = implode(",", $_POST['skillLang']);
-else $user['skillLang'] = null;
-if(isset($_POST['skillDatabase']))
-    $user['skillDatabase'] = implode(",", $_POST['skillDatabase']);
-else $user['skillDatabase'] = null;
-if(isset($_POST['skillFramework']))
-    $user['skillFramework'] = implode(",", $_POST['skillFramework']);
-else $user['skillFramework'] = null;
+$user['skills'] = @$_POST['skills'];
 
 session_start();
 $_SESSION['password'] = $user['password'];

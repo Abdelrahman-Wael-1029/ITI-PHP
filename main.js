@@ -20,11 +20,16 @@ const resetLabel = () => {
   let containers = document.querySelectorAll("form>div>div");
   let mx = 0;
   containers.forEach((element) => {
-    mx = Math.max(mx, element.firstElementChild.clientWidth);
+    if (element.firstElementChild.tagName === "LABEL" || element.firstElementChild.tagName === "SPAN")
+      mx = Math.max(mx, element.firstElementChild.clientWidth);
   });
   containers.forEach((element) => {
-    element.firstElementChild.style.width = mx + "px";
-    element.firstElementChild.style.marginLeft = "var(--mainMargin)";
+    if (element.firstElementChild.tagName === "LABEL" || element.firstElementChild.tagName === "SPAN") {
+      element.firstElementChild.style.width = mx + "px";
+      element.firstElementChild.style.marginLeft = "var(--mainMargin)";
+      let after = element.firstElementChild.nextElementSibling;
+      after.style.width = `calc(100% - ${mx}px)`;
+    }
   });
 };
 
